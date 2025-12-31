@@ -48,4 +48,7 @@ jobs:
     # authenticate with GitHub so we can do subsequent git operations
     - run: git remote set-url origin https://$MY_USERNAME:${{ secrets.GH_SECRET }}@github.com/vasmani/apple2ts.git
     # push the build (within the dist directory) to the gh-pages branch
-    - run: npm run deploy
+    - name: Deploy
+      run: npm run deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
